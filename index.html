@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Quiz de revisão para provas de Banco de Dados, TypeScript e Programação Orientada a Objetos." />
+  <title>Quiz de Prova | Banco de Dados • TypeScript • POO</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       CABEÇALHO + MENU DE NAVEGAÇÃO
+       ============================================================ -->
+  <header class="topo">
+    <div class="topo-conteudo">
+      <a href="#inicio" class="marca" data-pagina="inicio">
+        <span class="marca-logo">&lt;/&gt;</span>
+        <span class="marca-texto">
+          <strong>Quiz de Prova</strong>
+          <small>BD • TS • POO</small>
+        </span>
+      </a>
+
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menu" aria-expanded="false">☰</button>
+
+      <nav class="menu" id="menu">
+        <a href="#inicio" data-pagina="inicio" class="menu-link ativo">Início</a>
+        <a href="#bd" data-pagina="bd" class="menu-link">Banco de Dados</a>
+        <a href="#ts" data-pagina="ts" class="menu-link">TypeScript</a>
+        <a href="#poo" data-pagina="poo" class="menu-link">POO</a>
+        <a href="#resumo" data-pagina="resumo" class="menu-link">Resumo</a>
+        <a href="#pdf" data-pagina="pdf" class="menu-link">📄 Gerar PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- ==========================================================
+         PÁGINA INICIAL
+         ========================================================== -->
+    <section id="pagina-inicio" class="pagina ativa">
+      <div class="hero">
+        <span class="tag">2º semestre • Ciência da Computação</span>
+        <h1>Bateu o medo da prova? <span>Faz o quiz.</span></h1>
+        <p>
+          Quiz com as questões e os assuntos com <strong>maior probabilidade de cair</strong>
+          na prova de <strong>Banco de Dados</strong>, <strong>TypeScript</strong> e
+          <strong>Programação Orientada a Objetos</strong>. Nível do fácil ao ultradifícil,
+          com correção explicada no final.
+        </p>
+        <div class="hero-acoes">
+          <a href="#bd" data-pagina="bd" class="btn btn-primario">🗄️ Começar por Banco de Dados</a>
+          <a href="#resumo" data-pagina="resumo" class="btn btn-secundario">📌 Ver mapa mental</a>
+        </div>
+      </div>
+
+      <div class="cards">
+        <a href="#bd" data-pagina="bd" class="card">
+          <span class="card-icone">🗄️</span>
+          <h3>Banco de Dados</h3>
+          <p>Conceitos, MER, normalização (1FN/2FN/3FN), SQL (DDL/DML), chaves e transações.</p>
+          <span class="card-rodape">Abrir quiz →</span>
+        </a>
+
+        <a href="#ts" data-pagina="ts" class="card">
+          <span class="card-icone">🔷</span>
+          <h3>TypeScript</h3>
+          <p>Tipagem estática, interfaces, generics, union types, unknown/never e utility types.</p>
+          <span class="card-rodape">Abrir quiz →</span>
+        </a>
+
+        <a href="#poo" data-pagina="poo" class="card">
+          <span class="card-icone">🧩</span>
+          <h3>POO</h3>
+          <p>Classes, herança, polimorfismo, abstração, encapsulamento e princípios SOLID.</p>
+          <span class="card-rodape">Abrir quiz →</span>
+        </a>
+      </div>
+
+      <div class="aviso">
+        <strong>Como funciona:</strong> escolha o nível, responda uma questão por vez e, no final,
+        veja quantas você acertou e quantas errou — as erradas vêm com a explicação do motivo
+        do erro e o porquê da alternativa correta.
+      </div>
+    </section>
+
+    <!-- ==========================================================
+         PÁGINA BANCO DE DADOS
+         ========================================================== -->
+    <section id="pagina-bd" class="pagina">
+      <div class="pagina-topo">
+        <h2>🗄️ Banco de Dados</h2>
+        <p>
+          Baseado no seu mapa mental (Conceitos Fundamentais, Modelagem de Dados,
+          Normalização e Linguagem SQL) + os tópicos que mais aparecem em prova.
+        </p>
+      </div>
+      <div class="quiz" id="quiz-bd"></div>
+    </section>
+
+    <!-- ==========================================================
+         PÁGINA TYPESCRIPT
+         ========================================================== -->
+    <section id="pagina-ts" class="pagina">
+      <div class="pagina-topo">
+        <h2>🔷 TypeScript</h2>
+        <p>
+          Do básico da tipagem até conditional types. Foco no que professor gosta de cobrar:
+          <em>por que</em> tipar e <em>qual é a diferença</em> entre tipos parecidos.
+        </p>
+      </div>
+      <div class="quiz" id="quiz-ts"></div>
+    </section>
+
+    <!-- ==========================================================
+         PÁGINA POO
+         ========================================================== -->
+    <section id="pagina-poo" class="pagina">
+      <div class="pagina-topo">
+        <h2>🧩 Programação Orientada a Objetos</h2>
+        <p>
+          Pilares da orientação a objetos + os princípios SOLID, que costumam valer
+          a questão mais difícil da prova.
+        </p>
+      </div>
+      <div class="quiz" id="quiz-poo"></div>
+    </section>
+
+    <!-- ==========================================================
+         PÁGINA RESUMO / MAPA MENTAL
+         ========================================================== -->
+    <section id="pagina-resumo" class="pagina">
+      <div class="pagina-topo">
+        <h2>📌 Resumo — Banco de Dados Relacional</h2>
+        <p>Estrutura do seu mapa mental, organizada por ramo. Use como checklist de revisão antes da prova.</p>
+      </div>
+
+      <div class="mapa">
+        <div class="mapa-raiz">Banco de Dados Relacional</div>
+
+        <div class="mapa-grid">
+          <article class="mapa-ramo">
+            <h3>1. Conceitos Fundamentais</h3>
+            <ul>
+              <li><strong>Dados e Informação</strong>
+                <ul>
+                  <li>Forma Primária dos Fatos</li>
+                  <li>Valor Adicional da Informação</li>
+                </ul>
+              </li>
+              <li><strong>Processo de Transformação</strong>
+                <ul>
+                  <li>Tarefas Logicamente Relacionadas</li>
+                  <li>Regra Entrada Lixo → Saída Lixo (ELSL)</li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+
+          <article class="mapa-ramo">
+            <h3>2. Modelagem de Dados</h3>
+            <ul>
+              <li><strong>Modelo Entidade-Relacionamento (MER)</strong>
+                <ul>
+                  <li>Entidades e Relacionamentos</li>
+                  <li>Vantagens e Sintaxe Robusta</li>
+                </ul>
+              </li>
+              <li><strong>Esquemas de Projeto</strong>
+                <ul>
+                  <li>Modelo Conceitual Independente</li>
+                  <li>Modelos Lógico e Físico</li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+
+          <article class="mapa-ramo">
+            <h3>3. Normalização de Dados</h3>
+            <ul>
+              <li><strong>Primeira Forma Normal (1FN)</strong>
+                <ul>
+                  <li>Eliminação de Grupos de Repetição</li>
+                  <li>Ausência de Atributos Multivalorados</li>
+                </ul>
+              </li>
+              <li><strong>Segunda Forma Normal (2FN)</strong>
+                <ul>
+                  <li>Chave Primária Composta</li>
+                  <li>Dependência Funcional Completa</li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+
+          <article class="mapa-ramo">
+            <h3>4. Linguagem SQL</h3>
+            <ul>
+              <li><strong>Origem e Padrões</strong>
+                <ul>
+                  <li>Laboratórios IBM — Anos 70</li>
+                  <li>Padronização ISO/ANSI</li>
+                </ul>
+              </li>
+              <li><strong>Operações Relacionais</strong>
+                <ul>
+                  <li>Definição de Dados (DDL)</li>
+                  <li>Manipulação de Dados (DML)</li>
+                </ul>
+              </li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="notion">
+        <h3>🔗 Meu resumo no Notion</h3>
+        <p>Resumo Modelagem de Banco de Dados — abre em nova aba.</p>
+        <a class="btn btn-primario"
+           href="https://bancodedados.notion.site/Resumo-3db024d2130c80f799d8d5a2b6e04503"
+           target="_blank" rel="noopener noreferrer">
+          Abrir resumo no Notion ↗
+        </a>
+      </div>
+    </section>
+
+
+    <!-- ==========================================================
+         PÁGINA GERADOR DE PDF (arrasta arquivo/pasta e explica conceitos)
+         ========================================================== -->
+    <section id="pagina-pdf" class="pagina secao-pdf">
+
+      <div class="pagina-topo">
+        <h2>📄 Arrasta e Gera PDF</h2>
+        <p>
+          Joga aqui um arquivo <strong>ou uma pasta inteira</strong> do seu material.
+          Eu leio o conteúdo e monto um PDF explicando cada conceito que aparecer —
+          o que é, como aparece na prática e qual é a pegadinha de prova.
+        </p>
+      </div>
+
+      <!-- Área de arrastar e soltar -->
+      <div class="dropzone" id="dropzonePdf" role="button" tabindex="0"
+           aria-label="Arraste arquivos ou pastas aqui e clique para escolher">
+        <span class="dropzone-icone">📥</span>
+        <p class="dropzone-titulo">Arrasta a pasta ou o arquivo pra cá</p>
+        <p class="dropzone-dica">
+          Pode jogar a pasta inteira. <strong>Aceito QUALQUER arquivo</strong> — texto, código, SQL,
+          PDF, imagem, Word (<code>.docx</code>), PowerPoint, Excel, OpenOffice, <code>.dia</code>,
+          <code>.rtf</code>... Do PDF eu extraio o texto, da imagem eu leio por OCR e dos documentos
+          eu tiro o texto por dentro. <strong>Nenhum arquivo é recusado.</strong>
+        </p>
+        <button type="button" class="btn btn-secundario" id="btnEscolherPasta">
+          📁 ou clique aqui pra escolher uma pasta
+        </button>
+        <p class="dropzone-formatos">
+          Aceito tudo: texto/código, PDF, imagem, Word, PowerPoint, Excel, OpenOffice, .dia, .rtf e qualquer outro arquivo (sem limite de quantidade).
+        </p>
+        <input type="file" id="inputArquivosPdf" multiple
+               accept=".txt,.md,.markdown,.ts,.tsx,.js,.jsx,.json,.sql,.java,.cs,.py,.c,.cpp,.h,.php,.rb,.go,.rs,.kt,.swift,.dart,.html,.htm,.css,.scss,.csv,.yml,.yaml,.xml,.log,.sh,.bat,.pdf,.png,.jpg,.jpeg,.webp,.gif,.bmp,application/pdf,image/*" />
+        <input type="file" id="inputPastaPdf" webkitdirectory directory multiple />
+      </div>
+
+      <!-- Lista do que foi lido -->
+      <div class="lista-arquivos" id="listaArquivosPdf">
+        <!-- o JS preenche aqui -->
+      </div>
+
+      <!-- Painel de controle -->
+      <div class="controles-pdf" id="controlesPdf">
+        <h3>O que eu explico no PDF</h3>
+        <p class="ajuda">
+          Desmarca a matéria que você não quer ver. O PDF sai só com o que estiver marcado —
+          e sempre na ordem dos conceitos que mais aparecem no seu material.
+        </p>
+
+        <div class="grupo-temas">
+          <label><input type="checkbox" id="tema-bd" checked /> 🗄️ Banco de Dados</label>
+          <label><input type="checkbox" id="tema-ts" checked /> 🔷 TypeScript</label>
+          <label><input type="checkbox" id="tema-poo" checked /> 🧩 POO</label>
+        </div>
+
+        <div class="opcoes-pdf">
+          <label>
+            <input type="checkbox" id="pdfIncluirSubpastas" />
+            Incluir subpastas (lê também o que está dentro das pastas)
+          </label>
+          <label>
+            <input type="checkbox" id="pdfAnexar" checked />
+            Anexar os originais (PDF/imagem) no fim do PDF
+          </label>
+        </div>
+
+        <div class="acoes-pdf">
+          <button type="button" class="btn-gerar" id="btnGerarPdf" disabled>
+            🧠 Gerar PDF explicando os conceitos
+          </button>
+          <button type="button" class="btn-limpar" id="btnLimparPdf" disabled>
+            Limpar
+          </button>
+        </div>
+
+        <!-- Barra de progresso -->
+        <div class="progresso" id="progressoPdf">
+          <div class="progresso-barra" id="progressoBarraPdf"></div>
+        </div>
+
+        <p class="status-pdf" id="statusPdf"></p>
+
+        <!-- Prévia dos conceitos achados -->
+        <div class="previa-conceitos" id="previaConceitosPdf"></div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="rodape">
+    <p>Feito com ☕ e tipagem forte — bom estudo e boa prova! 🚀</p>
+  </footer>
+
+  <!-- Bibliotecas: jsPDF (gera o PDF), pdf.js (PDF), Tesseract (OCR), JSZip e Mammoth (docx/office) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+  <script src="script.js"></script>
+  <script src="gerador.js"></script>
+</body>
+</html>

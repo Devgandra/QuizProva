@@ -1,0 +1,1073 @@
+
+/* =============================================================
+   style.css — Quiz de Prova (BD / TS / POO)
+   Tema: preto + azul • layout responsivo na base do simples
+   ============================================================= */
+
+:root {
+  --preto:      #05070d;
+  --preto-2:    #0a0e18;
+  --card:       #0e1524;
+  --card-2:     #131c30;
+  --azul:       #2563eb;
+  --azul-2:     #3b82f6;
+  --azul-claro: #38bdf8;
+  --borda:      #1c2942;
+  --texto:      #e7eefb;
+  --texto-2:    #93a4bd;
+  --verde:      #22c55e;
+  --vermelho:   #ef4444;
+  --amarelo:    #eab308;
+  --laranja:    #f97316;
+  --raio:       14px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+  color: var(--texto);
+  background-color: var(--preto);
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(37, 99, 235, 0.22), transparent 45%),
+    radial-gradient(circle at 85% 100%, rgba(56, 189, 248, 0.12), transparent 45%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  line-height: 1.55;
+}
+
+/* -------------------------------------------------------------
+   TOPO / MENU
+   ------------------------------------------------------------- */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(5, 7, 13, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--borda);
+}
+
+.topo-conteudo {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+}
+
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--texto);
+}
+
+.marca-logo {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.55);
+}
+
+.marca-texto strong { display: block; font-size: 1rem; }
+.marca-texto small  { color: var(--texto-2); font-size: 0.72rem; letter-spacing: 0.06em; }
+
+.menu {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.menu-link {
+  color: var(--texto-2);
+  text-decoration: none;
+  padding: 9px 14px;
+  border-radius: 10px;
+  font-size: 0.92rem;
+  border: 1px solid transparent;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+
+.menu-link:hover {
+  color: var(--texto);
+  background: rgba(37, 99, 235, 0.14);
+}
+
+.menu-link.ativo {
+  color: #fff;
+  background: rgba(37, 99, 235, 0.28);
+  border-color: rgba(59, 130, 246, 0.5);
+}
+
+.btn-menu {
+  display: none;
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  font-size: 1.25rem;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+/* -------------------------------------------------------------
+   CONTEÚDO / PÁGINAS
+   ------------------------------------------------------------- */
+.conteudo {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 18px 60px;
+}
+
+.pagina { display: none; animation: aparecer 0.35s ease; }
+.pagina.ativa { display: block; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.pagina-topo { margin-bottom: 24px; }
+.pagina-topo h2 { font-size: 1.7rem; margin-bottom: 6px; }
+.pagina-topo p  { color: var(--texto-2); max-width: 680px; }
+
+/* -------------------------------------------------------------
+   HERO (início)
+   ------------------------------------------------------------- */
+.hero { text-align: left; padding: 14px 0 34px; }
+
+.tag {
+  display: inline-block;
+  font-size: 0.74rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--azul-claro);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: rgba(56, 189, 248, 0.09);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: clamp(1.7rem, 5vw, 2.7rem);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--azul-2), var(--azul-claro));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero p { color: var(--texto-2); max-width: 700px; margin-bottom: 22px; }
+
+.hero-acoes { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* -------------------------------------------------------------
+   BOTÕES
+   ------------------------------------------------------------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: 11px;
+  border: 1px solid transparent;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primario {
+  background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primario:hover { transform: translateY(-2px); }
+
+.btn-secundario {
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--texto);
+  border-color: var(--borda);
+}
+
+.btn-secundario:hover { border-color: var(--azul-2); color: #fff; }
+
+.btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+/* -------------------------------------------------------------
+   CARDS (início)
+   ------------------------------------------------------------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 26px;
+}
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: var(--texto);
+  background: linear-gradient(160deg, var(--card), var(--card-2));
+  border: 1px solid var(--borda);
+  border-radius: var(--raio);
+  padding: 22px;
+  transition: 0.22s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--azul-2);
+  box-shadow: 0 14px 34px rgba(37, 99, 235, 0.22);
+}
+
+.card-icone { font-size: 1.7rem; }
+
+.card h3 { margin: 10px 0 6px; font-size: 1.1rem; }
+.card p  { color: var(--texto-2); font-size: 0.9rem; margin-bottom: 14px; }
+.card-rodape { color: var(--azul-claro); font-size: 0.86rem; font-weight: 600; }
+
+.aviso {
+  background: rgba(37, 99, 235, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  border-radius: var(--raio);
+  padding: 16px 18px;
+  color: var(--texto-2);
+  font-size: 0.92rem;
+}
+
+.aviso strong { color: var(--texto); }
+
+/* -------------------------------------------------------------
+   ÁREA DO QUIZ
+   ------------------------------------------------------------- */
+.quiz {
+  background: linear-gradient(160deg, var(--card), #0b1120);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.quiz-cabecalho { margin-bottom: 18px; }
+
+.quiz-titulo {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.quiz-sub { color: var(--texto-2); font-size: 0.9rem; }
+
+.quiz-instrucoes {
+  list-style: none;
+  margin: 16px 0;
+  display: grid;
+  gap: 8px;
+}
+
+.quiz-instrucoes li {
+  color: var(--texto-2);
+  font-size: 0.9rem;
+  padding-left: 22px;
+  position: relative;
+}
+
+.quiz-instrucoes li::before {
+  content: "▸";
+  position: absolute;
+  left: 4px;
+  color: var(--azul-claro);
+}
+
+/* Níveis */
+.niveis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.nivel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 12px;
+  color: var(--texto);
+  cursor: pointer;
+  text-align: left;
+  font-size: 0.88rem;
+  transition: 0.18s;
+}
+
+.nivel:hover { border-color: var(--azul-2); }
+
+.nivel.selecionado {
+  border-color: var(--azul-claro);
+  background: rgba(37, 99, 235, 0.22);
+}
+
+.nivel small { display: block; color: var(--texto-2); font-size: 0.75rem; margin-top: 3px; }
+
+/* Progresso */
+.progresso-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--texto-2);
+}
+
+.barra {
+  height: 8px;
+  background: #0a1020;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 22px;
+  border: 1px solid var(--borda);
+}
+
+.barra-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--azul), var(--azul-claro));
+  transition: width 0.35s ease;
+}
+
+/* Etiquetas */
+.etiquetas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+.etiqueta {
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--borda);
+  color: var(--texto-2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.etiqueta.facil     { color: #86efac; border-color: rgba(34, 197, 94, 0.5);  background: rgba(34, 197, 94, 0.1); }
+.etiqueta.medio     { color: #fde047; border-color: rgba(234, 179, 8, 0.5);  background: rgba(234, 179, 8, 0.1); }
+.etiqueta.dificil   { color: #fdba74; border-color: rgba(249, 115, 22, 0.5); background: rgba(249, 115, 22, 0.1); }
+.etiqueta.ultra     { color: #fca5a5; border-color: rgba(239, 68, 68, 0.5);  background: rgba(239, 68, 68, 0.12); }
+
+.pergunta {
+  font-size: 1.1rem;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+/* Alternativas */
+.alternativas { display: grid; gap: 10px; }
+
+.alternativa {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  text-align: left;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: var(--texto);
+  font-size: 0.94rem;
+  cursor: pointer;
+  transition: 0.16s;
+  font-family: inherit;
+}
+
+.alternativa:hover:not(.travada) { border-color: var(--azul-2); background: rgba(37, 99, 235, 0.1); }
+
+.alternativa .letra {
+  flex: 0 0 26px;
+  height: 26px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  background: rgba(37, 99, 235, 0.25);
+  color: var(--azul-claro);
+}
+
+.alternativa.certa {
+  border-color: var(--verde);
+  background: rgba(34, 197, 94, 0.13);
+}
+
+.alternativa.certa .letra { background: var(--verde); color: #04210f; }
+
+.alternativa.errada {
+  border-color: var(--vermelho);
+  background: rgba(239, 68, 68, 0.13);
+}
+
+.alternativa.errada .letra { background: var(--vermelho); color: #2a0505; }
+
+.alternativa.travada { cursor: default; }
+
+/* Feedback */
+.feedback {
+  margin-top: 18px;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--borda);
+  font-size: 0.92rem;
+}
+
+.feedback.ok   { border-color: rgba(34, 197, 94, 0.5);  background: rgba(34, 197, 94, 0.08); }
+.feedback.erro { border-color: rgba(239, 68, 68, 0.5);  background: rgba(239, 68, 68, 0.08); }
+
+.feedback h4 { margin-bottom: 8px; font-size: 1rem; }
+.feedback p  { color: var(--texto-2); margin-bottom: 6px; }
+.feedback p:last-child { margin-bottom: 0; }
+.feedback strong { color: var(--texto); }
+
+.quiz-acoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* -------------------------------------------------------------
+   RESULTADO
+   ------------------------------------------------------------- */
+.resultado-placar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.placar-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+
+.placar-item span { display: block; font-size: 0.78rem; color: var(--texto-2); margin-bottom: 4px; }
+.placar-item strong { font-size: 1.6rem; }
+.placar-item.acertos strong { color: var(--verde); }
+.placar-item.erros strong   { color: var(--vermelho); }
+.placar-item.pct strong     { color: var(--azul-claro); }
+
+.mensagem-final {
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid var(--borda);
+  background: rgba(37, 99, 235, 0.1);
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.mensagem-final strong { color: var(--azul-claro); }
+
+.revisao h3 { margin-bottom: 6px; font-size: 1.15rem; }
+.revisao > p { color: var(--texto-2); font-size: 0.9rem; margin-bottom: 16px; }
+
+.revisao-item {
+  border: 1px solid var(--borda);
+  border-left: 4px solid var(--vermelho);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+.revisao-item h4 { font-size: 0.98rem; margin: 10px 0 12px; font-weight: 600; }
+
+.revisao-bloco {
+  font-size: 0.9rem;
+  padding: 10px 12px;
+  border-radius: 9px;
+  margin-bottom: 8px;
+}
+
+.revisao-bloco.sua   { background: rgba(239, 68, 68, 0.12); border: 1px solid rgba(239, 68, 68, 0.35); }
+.revisao-bloco.certa { background: rgba(34, 197, 94, 0.12); border: 1px solid rgba(34, 197, 94, 0.35); }
+.revisao-bloco.explica { background: rgba(37, 99, 235, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); color: var(--texto-2); }
+
+.revisao-bloco span { display: block; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; opacity: 0.85; }
+
+.quadro-perfeito {
+  border: 1px solid rgba(34, 197, 94, 0.45);
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 12px;
+  padding: 18px;
+  color: var(--texto);
+  margin-bottom: 16px;
+}
+
+/* -------------------------------------------------------------
+   MAPA MENTAL / RESUMO
+   ------------------------------------------------------------- */
+.mapa {
+  background: linear-gradient(160deg, var(--card), #0b1120);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 24px;
+  margin-bottom: 22px;
+}
+
+.mapa-raiz {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 18px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+}
+
+.mapa-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.mapa-ramo {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--borda);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.mapa-ramo h3 { font-size: 0.98rem; margin-bottom: 10px; color: var(--azul-claro); }
+
+.mapa-ramo ul { list-style: none; }
+.mapa-ramo li { font-size: 0.9rem; margin-bottom: 8px; color: var(--texto); }
+.mapa-ramo li ul { margin: 6px 0 0 14px; }
+.mapa-ramo li ul li { color: var(--texto-2); font-size: 0.85rem; margin-bottom: 3px; position: relative; padding-left: 14px; }
+.mapa-ramo li ul li::before { content: "—"; position: absolute; left: 0; color: var(--azul); }
+
+.notion {
+  background: linear-gradient(160deg, var(--card), #0b1120);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.notion h3 { margin-bottom: 6px; }
+.notion p  { color: var(--texto-2); font-size: 0.9rem; margin-bottom: 16px; }
+
+/* -------------------------------------------------------------
+   RODAPÉ
+   ------------------------------------------------------------- */
+.rodape {
+  border-top: 1px solid var(--borda);
+  padding: 22px 18px;
+  text-align: center;
+  color: var(--texto-2);
+  font-size: 0.85rem;
+}
+
+/* -------------------------------------------------------------
+   RESPONSIVO — mobile
+   ------------------------------------------------------------- */
+@media (max-width: 780px) {
+  .btn-menu { display: block; }
+
+  .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    padding: 10px 18px 16px;
+    background: rgba(5, 7, 13, 0.98);
+    border-bottom: 1px solid var(--borda);
+    display: none;
+  }
+
+  .menu.aberto { display: flex; }
+
+  .menu-link { padding: 12px 14px; }
+
+  .conteudo { padding: 22px 14px 50px; }
+
+  .quiz { padding: 18px; }
+
+  .hero h1 { font-size: 1.75rem; }
+
+  .quiz-acoes { justify-content: stretch; }
+  .quiz-acoes .btn { flex: 1; }
+}
+
+@media (max-width: 420px) {
+  .marca-texto small { display: none; }
+  .pergunta { font-size: 1rem; }
+  .alternativa { font-size: 0.9rem; padding: 12px; }
+}
+
+
+/* =============================================================================
+   PARTE NOVA: GERADOR DE PDF (arrasta arquivo/pasta e explica conceitos)
+   ============================================================================= */
+
+/* =============================================================================
+   drag-pdf.css — seção "Arrasta e Gera PDF"
+   -----------------------------------------------------------------------------
+   Estilo da área de arrastar-e-soltar + lista de arquivos + botão de gerar PDF.
+   Foi feito pra encaixar no mesmo tema do site (preto + azul), reaproveitando
+   as variáveis que já existem no style.css. Se por acaso elas não existirem,
+   os valores de reserva aqui embaixo seguram a bronca.
+
+   Padrão BR: comentário explicando e nome de classe em português. 🇧🇷☕
+   ============================================================================= */
+
+.secao-pdf {
+  margin-top: 10px;
+}
+
+/* -----------------------------------------------------------------------------
+   ÁREA DE ARRASTAR (dropzone)
+   -------------------------------------------------------------------------- */
+.dropzone {
+  --cor-principal: var(--azul, #2563eb);
+  --cor-clara: var(--azul-claro, #38bdf8);
+  --cor-fundo: var(--card, #0e1524);
+  --cor-borda: var(--borda, #1c2942);
+  --cor-texto: var(--texto, #e7eefb);
+  --cor-texto-2: var(--texto-2, #93a4bd);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  padding: 44px 24px;
+  border: 2px dashed var(--cor-borda);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.12), transparent 62%),
+    var(--cor-fundo);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+}
+
+.dropzone:hover {
+  border-color: var(--cor-clara);
+}
+
+/* Classe que o JS liga enquanto o arquivo está pairando em cima. */
+.dropzone.arrastando {
+  border-color: var(--cor-clara);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.22), transparent 62%),
+    var(--cor-fundo);
+  transform: scale(1.01);
+}
+
+.dropzone-icone {
+  font-size: 2.6rem;
+  line-height: 1;
+  filter: drop-shadow(0 6px 14px rgba(37, 99, 235, 0.45));
+}
+
+.dropzone-titulo {
+  margin: 0;
+  font-size: 1.15rem;
+  color: var(--cor-texto);
+}
+
+.dropzone-dica {
+  margin: 0;
+  max-width: 560px;
+  font-size: 0.9rem;
+  color: var(--cor-texto-2);
+}
+
+.dropzone-formatos {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: var(--cor-texto-2);
+  opacity: 0.85;
+}
+
+/* O input de verdade fica escondido — quem manda é a área toda. */
+.dropzone input[type="file"] {
+  display: none;
+}
+
+/* -----------------------------------------------------------------------------
+   LISTA DO QUE FOI LIDO
+   -------------------------------------------------------------------------- */
+.lista-arquivos {
+  margin-top: 18px;
+  border: 1px solid var(--borda, #1c2942);
+  border-radius: 14px;
+  background: var(--card, #0e1524);
+  overflow: hidden;
+}
+
+.lista-arquivos-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--borda, #1c2942);
+  background: var(--card-2, #131c30);
+  font-size: 0.9rem;
+}
+
+.lista-arquivos-topo strong {
+  color: var(--texto, #e7eefb);
+}
+
+.lista-arquivos-topo small {
+  color: var(--texto-2, #93a4bd);
+}
+
+.lista-arquivos ul {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.lista-arquivos li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: 0.86rem;
+  color: var(--texto-2, #93a4bd);
+  word-break: break-all;
+}
+
+.lista-arquivos li:nth-child(odd) {
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.lista-arquivos li .arquivo-caminho {
+  color: var(--texto, #e7eefb);
+}
+
+.lista-arquivos li .arquivo-tag {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--borda, #1c2942);
+  color: var(--texto-2, #93a4bd);
+}
+
+.lista-arquivos li.arquivo-ignorado .arquivo-caminho {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.lista-vazia {
+  padding: 18px;
+  text-align: center;
+  color: var(--texto-2, #93a4bd);
+  font-size: 0.88rem;
+}
+
+/* -----------------------------------------------------------------------------
+   PAINEL DE CONTROLE (opções + botão)
+   -------------------------------------------------------------------------- */
+.controles-pdf {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid var(--borda, #1c2942);
+  border-radius: 14px;
+  background: var(--card, #0e1524);
+}
+
+.controles-pdf h3 {
+  margin: 0 0 4px;
+  font-size: 1rem;
+  color: var(--texto, #e7eefb);
+}
+
+.controles-pdf .ajuda {
+  margin: 0 0 14px;
+  font-size: 0.85rem;
+  color: var(--texto-2, #93a4bd);
+}
+
+.grupo-temas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.grupo-temas label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--borda, #1c2942);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--texto-2, #93a4bd);
+  cursor: pointer;
+  transition: 0.2s;
+  user-select: none;
+}
+
+.grupo-temas label:hover {
+  border-color: var(--azul-claro, #38bdf8);
+}
+
+.grupo-temas input {
+  accent-color: var(--azul, #2563eb);
+}
+
+/* Destaque quando a opção está marcada (funciona com :has onde existe). */
+.grupo-temas label:has(input:checked) {
+  color: #fff;
+  border-color: var(--azul, #2563eb);
+  background: rgba(37, 99, 235, 0.18);
+}
+
+.acoes-pdf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.btn-gerar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 24px;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(135deg, var(--azul, #2563eb), var(--azul-claro, #38bdf8));
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+}
+
+.btn-gerar:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(37, 99, 235, 0.5);
+}
+
+.btn-gerar:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-limpar {
+  padding: 12px 20px;
+  border: 1px solid var(--borda, #1c2942);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--texto-2, #93a4bd);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-limpar:hover {
+  color: #fff;
+  border-color: var(--azul-claro, #38bdf8);
+}
+
+/* -----------------------------------------------------------------------------
+   BARRA DE PROGRESSO
+   -------------------------------------------------------------------------- */
+.progresso {
+  margin-top: 14px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(147, 164, 189, 0.15);
+  overflow: hidden;
+  display: none;
+}
+
+.progresso.ativo {
+  display: block;
+}
+
+.progresso-barra {
+  height: 100%;
+  width: 0%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--azul, #2563eb), var(--azul-claro, #38bdf8));
+  transition: width 0.25s ease;
+}
+
+.status-pdf {
+  margin-top: 12px;
+  font-size: 0.88rem;
+  color: var(--texto-2, #93a4bd);
+  min-height: 20px;
+}
+
+.status-pdf.ok {
+  color: var(--verde, #22c55e);
+}
+
+.status-pdf.erro {
+  color: var(--vermelho, #ef4444);
+}
+
+/* -----------------------------------------------------------------------------
+   PRÉVIA DOS CONCEITOS ENCONTRADOS
+   -------------------------------------------------------------------------- */
+.previa-conceitos {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 10px;
+}
+
+.previa-item {
+  padding: 12px 14px;
+  border: 1px solid var(--borda, #1c2942);
+  border-left-width: 3px;
+  border-radius: 10px;
+  background: var(--card, #0e1524);
+}
+
+.previa-item[data-tema="Banco de Dados"] { border-left-color: #2563eb; }
+.previa-item[data-tema="TypeScript"]     { border-left-color: #0ea5e9; }
+.previa-item[data-tema="POO"]            { border-left-color: #7c3aed; }
+
+.previa-item strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--texto, #e7eefb);
+  margin-bottom: 3px;
+}
+
+.previa-item small {
+  color: var(--texto-2, #93a4bd);
+  font-size: 0.75rem;
+}
+
+/* -----------------------------------------------------------------------------
+   RESPONSIVO
+   -------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  .dropzone {
+    padding: 32px 16px;
+  }
+
+  .acoes-pdf {
+    flex-direction: column;
+  }
+
+  .acoes-pdf .btn-gerar,
+  .acoes-pdf .btn-limpar {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   SELEÇÃO DE ARQUIVOS E OPÇÕES
+   -------------------------------------------------------------------------- */
+.lista-arquivos-acoes {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--borda, #1c2942);
+}
+
+.btn-mini {
+  padding: 6px 12px;
+  font-size: 0.78rem;
+  border: 1px solid var(--borda, #1c2942);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--texto-2, #93a4bd);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-mini:hover {
+  color: #fff;
+  border-color: var(--azul-claro, #38bdf8);
+}
+
+.arquivo-linha {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.arquivo-check {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--azul, #2563eb);
+  cursor: pointer;
+}
+
+.opcoes-pdf {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px dashed var(--borda, #1c2942);
+  border-radius: 10px;
+}
+
+.opcoes-pdf label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.84rem;
+  color: var(--texto-2, #93a4bd);
+  cursor: pointer;
+}
+
+.opcoes-pdf input {
+  accent-color: var(--azul, #2563eb);
+}
